@@ -11,8 +11,17 @@ endif()
 
 project ("MondRuntime")
 
+
+option(LUAU_BUILD_CLI "Build CLI" OFF)
+option(LUAU_BUILD_TESTS "Build tests" OFF)
+option(LUAU_BUILD_WEB "Build Web module" OFF)
+option(LUAU_WERROR "Warnings as errors" OFF)
+option(LUAU_STATIC_CRT "Link with the static CRT (/MT)" OFF)
+add_subdirectory(Lib/luau)
 # Add source to this project's executable.
-add_executable (MondRuntime "Src/MondRuntime.cpp" "Src/MondRuntime.h")
+add_executable (MondRuntime "Src/MondRuntime.cpp" "Src/MondRuntime.h" "Src/Html/html.cpp" "Src/Html/html.h")
+target_link_libraries(MondRuntime Luau.Compiler)
+target_link_libraries(MondRuntime Luau.VM)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET MondRuntime PROPERTY CXX_STANDARD 20)
