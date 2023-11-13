@@ -19,7 +19,7 @@ option(LUAU_WERROR "Warnings as errors" OFF)
 option(LUAU_STATIC_CRT "Link with the static CRT (/MT)" OFF)
 add_subdirectory(Lib/luau)
 # Add source to this project's executable.
-add_executable (MondRuntime "Src/MondRuntime.cpp" "Src/MondRuntime.h" "Src/Html/html.cpp" "Src/Html/html.h")
+add_executable (MondRuntime "Src/MondRuntime.cpp" "Src/MondRuntime.h" "Src/Html/html.cpp" "Src/Html/html.h" "Src/Page/page.cpp" "Src/Page/page.h")
 target_link_libraries(MondRuntime Luau.Compiler)
 target_link_libraries(MondRuntime Luau.VM)
 

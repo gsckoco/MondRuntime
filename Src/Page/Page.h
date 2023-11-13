@@ -17,9 +17,15 @@ namespace Page
         /* data */
         Html::HtmlChunk **chunks;
         int chunkCount;
+
+        lua_State *L;
     public:
         Page(std::string pageName, std::string htmlSource, std::string luaSource);
         ~Page();
+
+        bool Execute();
+        void EvaluteExpr(std::string expr);
+        std::string Render();
     };
     
     

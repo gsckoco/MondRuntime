@@ -42,7 +42,10 @@ int main()
 	}
 	*/
 
-	Page::Page *page = new Page::Page("index", "<% testVar %>", "local testVar = 'Something cool'; testVar += 5; print(testVar)");
+	Page::Page *page = new Page::Page("index", "<% testVar %>", "_G.testVar = 5; testVar += 5; print(testVar);");
+
+	page->Execute();
+	page->EvaluteExpr("testVar + 5");
 
 	return 1;
 }
